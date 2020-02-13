@@ -9,6 +9,7 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 ## Specify appropriate transforms, and batch_sizes
 # Define a transform to normalize the data
 data_dir = 'dogImages'
+#train_dir = os.path.join('goodDogImages', 'train')
 train_dir = os.path.join(data_dir, 'train')
 validation_dir = os.path.join(data_dir, 'valid')
 test_dir = os.path.join(data_dir, 'test')

@@ -46,7 +46,7 @@ from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 
-model_scratch.load_state_dict(torch.load(PATH))
+model_scratch.load()
 
 
 def train(n_epochs, loaders, model, optimizer, criterion, use_cuda):
@@ -77,8 +77,9 @@ def train(n_epochs, loaders, model, optimizer, criterion, use_cuda):
             train_loss =train_loss + ((1 / (batch_idx + 1)) * (loss.data - train_loss))
             loss.backward()
             optimizer.step()
-            print('Epoch: {} \tTraining Loss: {:.6f} \tValidation Loss: {:.6f} \tSaved Epoch: {}'.format(
+            print('Epoch: {}/{} \tTraining Loss: {:.6f} \tValidation Loss: {:.6f} \tSaved Epoch: {}'.format(
                 epoch, 
+                batch_idx,
                 train_loss,
                 valid_loss_min,
                 last_saved_epoch
